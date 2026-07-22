@@ -42,7 +42,9 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           user: ${{ secrets.EC2_USER }}
           key: ${{secrets.SSH_PRIVATE_KEY }}
-        script: 
+
+        script: |
+        
           aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}
 
           docker pull ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest

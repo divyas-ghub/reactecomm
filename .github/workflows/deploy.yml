@@ -46,6 +46,16 @@ jobs:
         run: |
             docker build -t reactimage .
 
+      - name: Trivy scan
+        uses: aquascan/trivy-actions@v0.2.8
+        with: 
+          image-ref: reactimage:latest
+          format: table
+          exit-code: 1
+          ignore-unfixed: true
+          vuln-type: os,library
+          severity: HIGH, CRITICAL
+
       - name: Tag Docker Image
         run: | 
           docker tag reactimage:latest ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest

@@ -47,7 +47,7 @@ jobs:
             docker build -t reactimage .
 
       - name: Trivy scan
-        uses: aquasecurity/trivy-action@v0.2.8
+        uses: aquasecurity/trivy-action@v0.28.0
         with: 
           image-ref: reactimage:latest
           format: table

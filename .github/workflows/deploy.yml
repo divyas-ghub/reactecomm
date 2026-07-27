@@ -26,7 +26,7 @@ jobs:
         run: npm test -- --watchAll=false
 
       - name: Sonarqube Test
-        run: SonarSource/sonarqube-scan-action@v5
+        uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         

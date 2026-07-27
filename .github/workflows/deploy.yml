@@ -24,6 +24,11 @@ jobs:
 
       - name: Unit Test
         run: npm test -- --watchAll=false
+
+      - name: Sonarqube Test
+        run: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         
 
       - name: Configure AWS credentials
